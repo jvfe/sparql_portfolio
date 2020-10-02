@@ -1,0 +1,9 @@
+# Get the number of statements for each item
+
+SELECT ?item ?itemLabel ?statements
+WHERE 
+{
+  ?item wdt:P31 wd:Q189118 ;
+        wikibase:statements ?statements . 
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

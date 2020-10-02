@@ -1,0 +1,19 @@
+# This query shows a string search on a particular subset of items
+# (Proteins in this case). The search is done both by label and alias.
+
+SELECT ?item ?itemLabel WHERE {
+
+  SERVICE wikibase:mwapi {
+      bd:serviceParam wikibase:endpoint "www.wikidata.org";
+        wikibase:api "EntitySearch";
+        mwapi:search "cyclin";
+        mwapi:language "en".
+      ?item wikibase:apiOutputItem mwapi:item.
+  }
+
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language "en". 
+  }
+  
+  ?item wdt:P31 wd:Q8054
+}
