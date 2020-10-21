@@ -1,0 +1,15 @@
+# Query Wikidata for information on a predefined set of items
+# In this case, the set is wd:Q42 wd:Q2 wd:Q155
+# Then it  checks which ones are instances of human (Q5)
+# And retrieve some optional information on those items
+    
+    SELECT DISTINCT ?item ?itemLabel ?birth ?death ?birthplaceLabel  ?coordinate 
+    WHERE {
+    VALUES ?item {wd:Q42 wd:Q2 wd:Q155}
+    ?item wdt:P31 wd:Q5.
+    OPTIONAL{?item wdt:P569 ?birth.} 
+    OPTIONAL{?item wdt:P570 ?death.}
+    OPTIONAL{?item wdt:P19 ?birthplace.
+            ?birthplace wdt:P625 ?coordinate.} 
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
