@@ -1,0 +1,13 @@
+# Get all properties used for a kind on Wikidata
+# In this case, the kind is Q189118
+# Wikidata Query Service: https://w.wiki/ht2
+
+SELECT DISTINCT ?property (COUNT(?property) AS ?count)
+WHERE 
+{
+  ?item wdt:P31 wd:Q189118.
+  ?item ?property ?value.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+GROUP BY ?property
+ORDER BY ?object
