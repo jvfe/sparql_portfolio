@@ -1,0 +1,16 @@
+# See articles with a main subject
+# that have a particular regex on the title
+# but no references for the main subject
+# Used for maintenance
+
+SELECT ?item ?title WHERE {
+  
+  ?item wdt:P31 wd:Q13442814;
+        wdt:P1476 ?title;
+        wdt:P921 wd:Q82069695;
+        p:P921 ?subject_node.
+    
+  FILTER NOT EXISTS {?subject_node prov:wasDerivedFrom ?references.}
+  FILTER (regex(LCASE(?title), 'sars-cov-?2'))
+  
+} 
