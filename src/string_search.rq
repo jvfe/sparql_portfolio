@@ -15,5 +15,6 @@ SELECT ?item ?itemLabel WHERE {
     bd:serviceParam wikibase:language "en". 
   }
   
-  ?item wdt:P31 wd:Q8054
+  ?item p:P31 ?instance_of .
+  ?instance_of ps:P31 wd:Q8054 .
 }
