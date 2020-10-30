@@ -1,0 +1,7 @@
+# Find items without description
+SELECT ?item ?itemLabel ?subclassLabel WHERE {
+  ?item (wdt:P31/(wdt:P279*)) wd:Q189118.
+  OPTIONAL { ?item wdt:P279 ?subclass. }
+  FILTER(NOT EXISTS { ?item schema:description ?descr. })
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
