@@ -1,0 +1,14 @@
+# Select cells related to particular Gene Ontology identifiers
+
+SELECT ?cell_type ?cell_typeLabel ?go_ids ?go_termLabel ?geneLabel WHERE {
+  VALUES ?go_ids {
+    "GO:0006936"
+    "GO:0009100"
+  }
+  ?go_term wdt:P686 ?go_ids.
+  ?protein wdt:P703 wd:Q15978631;
+    ?godomain ?go_term;
+    wdt:P702 ?gene.
+  ?cell_type wdt:P8872 ?gene.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
