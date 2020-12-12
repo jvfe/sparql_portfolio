@@ -7,8 +7,8 @@ SELECT ?cell_type ?cell_typeLabel ?go_ids ?go_termLabel ?geneLabel WHERE {
   }
   ?cell_type wdt:P8872 ?gene.
   ?gene wdt:P703 wd:Q15978631;
-        wdt:P688 ?protein .
-        ?protein (wdt:P680|wdt:P681|wdt:P682) ?go_term.
-        ?go_term wdt:P686 ?go_ids.
+    wdt:P688 ?protein.
+  ?protein (wdt:P680|wdt:P681|wdt:P682) ?go_term.
+  ?go_term wdt:P686 ?go_ids.
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
