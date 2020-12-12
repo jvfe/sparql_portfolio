@@ -1,0 +1,14 @@
+# Select Gene Ontology identifiers related to particular cell types
+
+SELECT ?cell_type ?cell_typeLabel ?go_ids ?go_termLabel ?geneLabel WHERE {
+  VALUES ?cell_type {
+    wd:Q101404901
+    wd:Q101405206
+  }
+  ?cell_type wdt:P8872 ?gene.
+  ?gene wdt:P703 wd:Q15978631;
+        wdt:P688 ?protein .
+        ?protein (wdt:P680|wdt:P681|wdt:P682) ?go_term.
+        ?go_term wdt:P686 ?go_ids.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
