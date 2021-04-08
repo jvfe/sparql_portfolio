@@ -1,0 +1,35 @@
+SELECT ?drug ?drugLabel (GROUP_CONCAT(DISTINCT ?drugHasRoleName; SEPARATOR = " | ") AS ?has_role) (GROUP_CONCAT(DISTINCT ?conditionName; SEPARATOR = " | ") AS ?treats) WHERE {
+  VALUES ?db_ids {
+    # DrugBank IDs
+    "01667"
+    "01193"
+    "00414"
+    "00945"
+    "00131"
+    "01426"
+    "00518"
+    "11371"
+    "01059"
+    "00540"
+    "01051"
+    "14060"
+    "00646"
+    "00338"
+    "13026"
+    "01092"
+    "13627"
+    "01580"
+    "00935"
+  }
+  ?drug wdt:P715 ?db_ids.
+  OPTIONAL {
+    ?drug wdt:P2868 ?drugHasRole.
+    ?drugHasRole rdfs:label ?drugHasRoleName.
+    FILTER((LANG(?drugHasRoleName)) = "en")
+    ?drug wdt:P2175 ?condition.
+    ?condition rdfs:label ?conditionName.
+    FILTER((LANG(?conditionName)) = "en")
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+GROUP BY ?drug ?drugLabel
