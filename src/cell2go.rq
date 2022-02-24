@@ -1,4 +1,5 @@
-# Select Gene Ontology identifiers related to particular cell types
+#+ summary: Select Gene Ontology identifiers related to particular cell types
+#+ endpoint: https://query.wikidata.org/sparql
 
 SELECT ?cell_type ?cell_typeLabel ?go_ids ?go_termLabel ?geneLabel WHERE {
   VALUES ?cell_type {

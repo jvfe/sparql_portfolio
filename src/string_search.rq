@@ -1,4 +1,6 @@
-# This query shows a string search on a particular subset of items
+#+ summary: String search on a particular subset of items
+#+ endpoint: https://query.wikidata.org/sparql
+
 # (Proteins in this case). The search is done both by label and alias.
 
 SELECT ?item ?itemLabel WHERE {

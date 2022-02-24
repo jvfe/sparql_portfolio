@@ -1,4 +1,5 @@
-# Select cells related to particular Gene Ontology identifiers
+#+ summary: Select cells related to particular Gene Ontology identifiers
+#+ endpoint: https://query.wikidata.org/sparql
 
 SELECT ?cell_type ?cell_typeLabel ?go_ids ?go_termLabel ?geneLabel WHERE {
   VALUES ?go_ids {

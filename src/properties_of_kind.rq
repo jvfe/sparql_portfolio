@@ -1,4 +1,6 @@
-# Get all properties used for a kind on Wikidata
+#+ summary: Get all properties used for a kind on Wikidata
+#+ endpoint: https://query.wikidata.org/sparql
+
 # In this case, the kind is Q189118
 # Wikidata Query Service: https://w.wiki/ht2
 

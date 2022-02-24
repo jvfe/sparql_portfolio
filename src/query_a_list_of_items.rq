@@ -1,4 +1,6 @@
-# Query Wikidata for information on a predefined set of items
+#+ summary: Query Wikidata for information on a predefined set of items
+#+ endpoint: https://query.wikidata.org/sparql
+
 # In this case, the set is wd:Q42 wd:Q2 wd:Q155
 # Then it  checks which ones are instances of human (Q5)
 # And retrieve some optional information on those items

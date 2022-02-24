@@ -1,3 +1,6 @@
+#+ summary: Acquire drugbank information from IDs
+#+ endpoint: https://query.wikidata.org/sparql
+
 SELECT ?drug ?drugLabel (GROUP_CONCAT(DISTINCT ?drugHasRoleName; SEPARATOR = " | ") AS ?has_role) (GROUP_CONCAT(DISTINCT ?conditionName; SEPARATOR = " | ") AS ?treats) WHERE {
   VALUES ?db_ids {
     # DrugBank IDs

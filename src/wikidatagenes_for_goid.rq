@@ -1,3 +1,6 @@
+#+ summary: Get Wikidata genes related to GO ID
+#+ endpoint: https://query.wikidata.org/sparql
+
 PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX wd: <http://www.wikidata.org/entity/>

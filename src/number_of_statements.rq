@@ -1,4 +1,5 @@
-# Get the number of statements for each item
+#+ summary: Get the number of statements for each item
+#+ endpoint: https://query.wikidata.org/sparql
 
 SELECT ?item ?itemLabel ?statements
 WHERE 

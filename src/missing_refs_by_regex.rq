@@ -1,6 +1,6 @@
-# See articles with a main subject
-# that have a particular regex on the title
-# but no references for the main subject
+#+ summary: See articles with a main subject that have a particular regex on the title but no references for the main subject
+#+ endpoint: https://query.wikidata.org/sparql 
+
 # Used for maintenance
 
 SELECT ?item ?title WHERE {
