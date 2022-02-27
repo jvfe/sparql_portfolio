@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container is-centered">
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content has-text-centered">
+                <h1>
+                    <%= title %>
+                </h1>
+                <p class="py-2">
+                    <%= description %>
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="table-container is-max-desktop place-center">
+                <table class="table is-hoverable">
+                    <tbody>
+                        <% queryFiles.forEach(function(queryFile){ %>
+                            <tr>
+                                <td>
+                                    <a href="./queries/<%= queryFile.filename %>.html">
+                                        <%= queryFile.filename %>.rq
+                                    </a>
+                                </td>
+                                <td>
+                                    <p>
+                                        <%= queryFile.title %>
+                                    </p>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
