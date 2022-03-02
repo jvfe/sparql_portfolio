@@ -34,20 +34,29 @@ const renderAll = (config) => {
     ...config,
   };
 
+  if (!fs.existsSync(config["output_directory"])) {
+    fs.mkdirSync(config["output_directory"]);
+    fs.mkdirSync(`${config["output_directory"]}/queries/`);
+  }
+
   queriesArr.forEach((query) => {
     ejs.renderFile(allData["query_template"], query, {}, (err, str) => {
       if (err) throw err;
 
-      fs.writeFile(`./_site/queries/${query.filename}.html`, str, (err) => {
-        if (err) throw err;
-      });
+      fs.writeFile(
+        `${config["output_directory"]}/queries/${query.filename}.html`,
+        str,
+        (err) => {
+          if (err) throw err;
+        }
+      );
     });
   });
 
   ejs.renderFile(allData["index_template"], allData, {}, (err, str) => {
     if (err) throw err;
 
-    fs.writeFile("./_site/index.html", str, (err) => {
+    fs.writeFile(`${config["output_directory"]}/index.html`, str, (err) => {
       if (err) throw err;
     });
   });
