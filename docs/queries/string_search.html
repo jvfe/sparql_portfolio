@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        String search on a particular subset of items
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5 has-text-light" href="../">
+                    jvfe&#39;s SPARQL queries
+                </a>
+            </div>
+        </nav>
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content">
+                <h1>
+                    String search on a particular subset of items
+                </h1>
+                <main class="columns py-2">
+                    <div class="column is-full">
+                        <iframe style="width: 100%; height: 50vh; border: none;"
+                            src="https://query.wikidata.org/embed.html#%23%2B%20summary%3A%20String%20search%20on%20a%20particular%20subset%20of%20items%0A%23%2B%20endpoint%3A%20https%3A%2F%2Fquery.wikidata.org%2Fsparql%0A%0A%23%20(Proteins%20in%20this%20case).%20The%20search%20is%20done%20both%20by%20label%20and%20alias.%0A%0ASELECT%20%3Fitem%20%3FitemLabel%20WHERE%20%7B%0A%0A%20%20SERVICE%20wikibase%3Amwapi%20%7B%0A%20%20%20%20%20%20bd%3AserviceParam%20wikibase%3Aendpoint%20%22www.wikidata.org%22%3B%0A%20%20%20%20%20%20%20%20wikibase%3Aapi%20%22EntitySearch%22%3B%0A%20%20%20%20%20%20%20%20mwapi%3Asearch%20%22cyclin%22%3B%0A%20%20%20%20%20%20%20%20mwapi%3Alanguage%20%22en%22.%0A%20%20%20%20%20%20%3Fitem%20wikibase%3AapiOutputItem%20mwapi%3Aitem.%0A%20%20%7D%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%0A%20%20%7D%0A%20%20%0A%20%20%3Fitem%20p%3AP31%20%3Finstance_of%20.%0A%20%20%3Finstance_of%20ps%3AP31%20wd%3AQ8054%20.%0A%7D%0A" referrerpolicy="origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                        <pre>#+ summary: String search on a particular subset of items
+#+ endpoint: https://query.wikidata.org/sparql
+
+# (Proteins in this case). The search is done both by label and alias.
+
+SELECT ?item ?itemLabel WHERE {
+
+  SERVICE wikibase:mwapi {
+      bd:serviceParam wikibase:endpoint &#34;www.wikidata.org&#34;;
+        wikibase:api &#34;EntitySearch&#34;;
+        mwapi:search &#34;cyclin&#34;;
+        mwapi:language &#34;en&#34;.
+      ?item wikibase:apiOutputItem mwapi:item.
+  }
+
+  SERVICE wikibase:label { 
+    bd:serviceParam wikibase:language &#34;en&#34;. 
+  }
+  
+  ?item p:P31 ?instance_of .
+  ?instance_of ps:P31 wd:Q8054 .
+}
+</pre>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </body>
+
+    </html>

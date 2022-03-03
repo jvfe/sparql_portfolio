@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Acquire drugbank information from IDs
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5 has-text-light" href="../">
+                    jvfe&#39;s SPARQL queries
+                </a>
+            </div>
+        </nav>
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content">
+                <h1>
+                    Acquire drugbank information from IDs
+                </h1>
+                <main class="columns py-2">
+                    <div class="column is-full">
+                        <iframe style="width: 100%; height: 50vh; border: none;"
+                            src="https://query.wikidata.org/embed.html#%23%2B%20summary%3A%20Acquire%20drugbank%20information%20from%20IDs%0A%23%2B%20endpoint%3A%20https%3A%2F%2Fquery.wikidata.org%2Fsparql%0A%0ASELECT%20%3Fdrug%20%3FdrugLabel%20(GROUP_CONCAT(DISTINCT%20%3FdrugHasRoleName%3B%20SEPARATOR%20%3D%20%22%20%7C%20%22)%20AS%20%3Fhas_role)%20(GROUP_CONCAT(DISTINCT%20%3FconditionName%3B%20SEPARATOR%20%3D%20%22%20%7C%20%22)%20AS%20%3Ftreats)%20WHERE%20%7B%0A%20%20VALUES%20%3Fdb_ids%20%7B%0A%20%20%20%20%23%20DrugBank%20IDs%0A%20%20%20%20%2201667%22%0A%20%20%20%20%2201193%22%0A%20%20%20%20%2200414%22%0A%20%20%20%20%2200945%22%0A%20%20%20%20%2200131%22%0A%20%20%20%20%2201426%22%0A%20%20%20%20%2200518%22%0A%20%20%20%20%2211371%22%0A%20%20%20%20%2201059%22%0A%20%20%20%20%2200540%22%0A%20%20%20%20%2201051%22%0A%20%20%20%20%2214060%22%0A%20%20%20%20%2200646%22%0A%20%20%20%20%2200338%22%0A%20%20%20%20%2213026%22%0A%20%20%20%20%2201092%22%0A%20%20%20%20%2213627%22%0A%20%20%20%20%2201580%22%0A%20%20%20%20%2200935%22%0A%20%20%7D%0A%20%20%3Fdrug%20wdt%3AP715%20%3Fdb_ids.%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fdrug%20wdt%3AP2868%20%3FdrugHasRole.%0A%20%20%20%20%3FdrugHasRole%20rdfs%3Alabel%20%3FdrugHasRoleName.%0A%20%20%20%20FILTER((LANG(%3FdrugHasRoleName))%20%3D%20%22en%22)%0A%20%20%20%20%3Fdrug%20wdt%3AP2175%20%3Fcondition.%0A%20%20%20%20%3Fcondition%20rdfs%3Alabel%20%3FconditionName.%0A%20%20%20%20FILTER((LANG(%3FconditionName))%20%3D%20%22en%22)%0A%20%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0AGROUP%20BY%20%3Fdrug%20%3FdrugLabel%0A" referrerpolicy="origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                        <pre>#+ summary: Acquire drugbank information from IDs
+#+ endpoint: https://query.wikidata.org/sparql
+
+SELECT ?drug ?drugLabel (GROUP_CONCAT(DISTINCT ?drugHasRoleName; SEPARATOR = &#34; | &#34;) AS ?has_role) (GROUP_CONCAT(DISTINCT ?conditionName; SEPARATOR = &#34; | &#34;) AS ?treats) WHERE {
+  VALUES ?db_ids {
+    # DrugBank IDs
+    &#34;01667&#34;
+    &#34;01193&#34;
+    &#34;00414&#34;
+    &#34;00945&#34;
+    &#34;00131&#34;
+    &#34;01426&#34;
+    &#34;00518&#34;
+    &#34;11371&#34;
+    &#34;01059&#34;
+    &#34;00540&#34;
+    &#34;01051&#34;
+    &#34;14060&#34;
+    &#34;00646&#34;
+    &#34;00338&#34;
+    &#34;13026&#34;
+    &#34;01092&#34;
+    &#34;13627&#34;
+    &#34;01580&#34;
+    &#34;00935&#34;
+  }
+  ?drug wdt:P715 ?db_ids.
+  OPTIONAL {
+    ?drug wdt:P2868 ?drugHasRole.
+    ?drugHasRole rdfs:label ?drugHasRoleName.
+    FILTER((LANG(?drugHasRoleName)) = &#34;en&#34;)
+    ?drug wdt:P2175 ?condition.
+    ?condition rdfs:label ?conditionName.
+    FILTER((LANG(?conditionName)) = &#34;en&#34;)
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language &#34;en&#34;. }
+}
+GROUP BY ?drug ?drugLabel
+</pre>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </body>
+
+    </html>

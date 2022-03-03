@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Get Wikidata genes related to GO ID
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5 has-text-light" href="../">
+                    jvfe&#39;s SPARQL queries
+                </a>
+            </div>
+        </nav>
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content">
+                <h1>
+                    Get Wikidata genes related to GO ID
+                </h1>
+                <main class="columns py-2">
+                    <div class="column is-full">
+                        <iframe style="width: 100%; height: 50vh; border: none;"
+                            src="https://query.wikidata.org/embed.html#%23%2B%20summary%3A%20Get%20Wikidata%20genes%20related%20to%20GO%20ID%0A%23%2B%20endpoint%3A%20https%3A%2F%2Fquery.wikidata.org%2Fsparql%0A%0APREFIX%20wikibase%3A%20%3Chttp%3A%2F%2Fwikiba.se%2Fontology%23%3E%0APREFIX%20wdt%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fdirect%2F%3E%0APREFIX%20wd%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fentity%2F%3E%0APREFIX%20ps%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fstatement%2F%3E%0APREFIX%20pq%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2Fqualifier%2F%3E%0APREFIX%20p%3A%20%3Chttp%3A%2F%2Fwww.wikidata.org%2Fprop%2F%3E%0APREFIX%20insdcschema%3A%20%3Chttp%3A%2F%2Fddbj.nig.ac.jp%2Fontologies%2Fnucleotide%2F%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0APREFIX%20vg%3A%20%3Chttp%3A%2F%2Fbiohackathon.org%2Fresource%2Fvg%23%3E%0APREFIX%20uniprotkb%3A%20%3Chttp%3A%2F%2Fpurl.uniprot.org%2Funiprot%2F%3E%0APREFIX%20uberon%3A%20%3Chttp%3A%2F%2Fpurl.obolibrary.org%2Fobo%2Fuo%23%3E%0APREFIX%20sp%3A%20%3Chttp%3A%2F%2Fspinrdf.org%2Fsp%23%3E%0APREFIX%20SLM%3A%20%3Chttps%3A%2F%2Fswisslipids.org%2Frdf%2F%3E%0APREFIX%20skos%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0APREFIX%20sio%3A%20%3Chttp%3A%2F%2Fsemanticscience.org%2Fresource%2F%3E%0APREFIX%20sh%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fshacl%23%3E%0APREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX%20rh%3A%20%3Chttp%3A%2F%2Frdf.rhea-db.org%2F%3E%0APREFIX%20pubmed%3A%20%3Chttp%3A%2F%2Frdf.ncbi.nlm.nih.gov%2Fpubmed%2F%3E%0APREFIX%20patent%3A%20%3Chttp%3A%2F%2Fdata.epo.org%2Flinked-data%2Fdef%2Fpatent%2F%3E%0APREFIX%20owl%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23%3E%0APREFIX%20orthodbGroup%3A%20%3Chttp%3A%2F%2Fpurl.orthodb.org%2Fodbgroup%2F%3E%0APREFIX%20orthodb%3A%20%3Chttp%3A%2F%2Fpurl.orthodb.org%2F%3E%0APREFIX%20orth%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fnet%2Forth%23%3E%0APREFIX%20np%3A%20%3Chttp%3A%2F%2Fnextprot.org%2Frdf%23%3E%0APREFIX%20nextprot%3A%20%3Chttp%3A%2F%2Fnextprot.org%2Frdf%2Fentry%2F%3E%0APREFIX%20mnx%3A%20%3Chttps%3A%2F%2Frdf.metanetx.org%2Fschema%2F%3E%0APREFIX%20mnet%3A%20%3Chttps%3A%2F%2Frdf.metanetx.org%2Fmnet%2F%3E%0APREFIX%20mesh%3A%20%3Chttp%3A%2F%2Fid.nlm.nih.gov%2Fmesh%2F%3E%0APREFIX%20lscr%3A%20%3Chttp%3A%2F%2Fpurl.org%2Flscr%23%3E%0APREFIX%20keywords%3A%20%3Chttp%3A%2F%2Fpurl.uniprot.org%2Fkeywords%2F%3E%0APREFIX%20insdc%3A%20%3Chttp%3A%2F%2Fidentifiers.org%2Finsdc%2F%3E%0APREFIX%20identifiers%3A%20%3Chttp%3A%2F%2Fidentifiers.org%2F%3E%0APREFIX%20glyconnect%3A%20%3Chttps%3A%2F%2Fpurl.org%2Fglyconnect%2F%3E%0APREFIX%20glycan%3A%20%3Chttp%3A%2F%2Fpurl.jp%2Fbio%2F12%2Fglyco%2Fglycan%23%3E%0APREFIX%20genex%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fgenex%23%3E%0APREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0APREFIX%20faldo%3A%20%3Chttp%3A%2F%2Fbiohackathon.org%2Fresource%2Ffaldo%23%3E%0APREFIX%20eunisSpecies%3A%20%3Chttp%3A%2F%2Feunis.eea.europa.eu%2Frdf%2Fspecies-schema.rdf%23%3E%0APREFIX%20ensembltranscript%3A%20%3Chttp%3A%2F%2Frdf.ebi.ac.uk%2Fresource%2Fensembl.transcript%2F%3E%0APREFIX%20ensemblterms%3A%20%3Chttp%3A%2F%2Frdf.ebi.ac.uk%2Fterms%2Fensembl%2F%3E%0APREFIX%20ensemblprotein%3A%20%3Chttp%3A%2F%2Frdf.ebi.ac.uk%2Fresource%2Fensembl.protein%2F%3E%0APREFIX%20ensemblexon%3A%20%3Chttp%3A%2F%2Frdf.ebi.ac.uk%2Fresource%2Fensembl.exon%2F%3E%0APREFIX%20ensembl%3A%20%3Chttp%3A%2F%2Frdf.ebi.ac.uk%2Fresource%2Fensembl%2F%3E%0APREFIX%20ec%3A%20%3Chttp%3A%2F%2Fpurl.uniprot.org%2Fenzyme%2F%3E%0APREFIX%20dc%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0APREFIX%20cco%3A%20%3Chttp%3A%2F%2Frdf.ebi.ac.uk%2Fterms%2Fchembl%23%3E%0APREFIX%20chebihash%3A%20%3Chttp%3A%2F%2Fpurl.obolibrary.org%2Fobo%2Fchebi%23%3E%0APREFIX%20CHEBI%3A%20%3Chttp%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FCHEBI_%3E%0APREFIX%20bibo%3A%20%3Chttp%3A%2F%2Fpurl.org%2Fontology%2Fbibo%2F%3E%0APREFIX%20allie%3A%20%3Chttp%3A%2F%2Fallie.dbcls.jp%2F%3E%0APREFIX%20GO%3A%20%3Chttp%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FGO_%3E%0APREFIX%20obo%3A%20%3Chttp%3A%2F%2Fpurl.obolibrary.org%2Fobo%2F%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20taxon%3A%20%3Chttp%3A%2F%2Fpurl.uniprot.org%2Ftaxonomy%2F%3E%0APREFIX%20up%3A%20%3Chttp%3A%2F%2Fpurl.uniprot.org%2Fcore%2F%3E%0A%0A%23%20Queries%20uniprot%20for%20genes%20related%20with%20a%20particular%20GO%0A%23%20term%20and%20then%20queries%20wikidata%20for%20these%20genes%0A%0ASELECT%20%3Fwdtitem%20%3Fname%0A%20%20WITH%20%7B%0A%20%20%20%20SELECT%20DISTINCT%20%3Fprotein%20%3Fname%20WHERE%20%7B%0A%20%20%20%20SERVICE%20%3Chttps%3A%2F%2Fsparql.uniprot.org%2Fsparql%3E%20%7B%0A%20%20%20%20%20%20%3Fprotein%20rdf%3Atype%20up%3AProtein%3B%0A%20%20%20%20%20%20%20%20up%3Areviewed%20%22true%22%5E%5Exsd%3Aboolean%3B%0A%20%20%20%20%20%20%20%20up%3Aorganism%20%3Chttp%3A%2F%2Fpurl.uniprot.org%2Ftaxonomy%2F9606%3E%3B%0A%20%20%20%20%20%20%20%20(up%3AclassifiedWith%7C(up%3AclassifiedWith%2Frdfs%3AsubClassOf))%20obo%3AGO_0016301%3B%0A%20%20%20%20%20%20%20%20up%3AencodedBy%20%3Fgene.%0A%20%20%20%20%20%20%3Fgene%20skos%3AprefLabel%20%3Fname.%0A%20%20%20%7D%0A%20%20%7D%0A%7D%20AS%20%25uniprot_subquery%20WHERE%20%7B%0A%20%20%20%20INCLUDE%20%25uniprot_subquery%20.%0A%20%20%20%20%3Fwdtitem%20wdt%3AP353%20%3Fname.%0A%7D%0A%0A" referrerpolicy="origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                        <pre>#+ summary: Get Wikidata genes related to GO ID
+#+ endpoint: https://query.wikidata.org/sparql
+
+PREFIX wikibase: &lt;http://wikiba.se/ontology#&gt;
+PREFIX wdt: &lt;http://www.wikidata.org/prop/direct/&gt;
+PREFIX wd: &lt;http://www.wikidata.org/entity/&gt;
+PREFIX ps: &lt;http://www.wikidata.org/prop/statement/&gt;
+PREFIX pq: &lt;http://www.wikidata.org/prop/qualifier/&gt;
+PREFIX p: &lt;http://www.wikidata.org/prop/&gt;
+PREFIX insdcschema: &lt;http://ddbj.nig.ac.jp/ontologies/nucleotide/&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+PREFIX vg: &lt;http://biohackathon.org/resource/vg#&gt;
+PREFIX uniprotkb: &lt;http://purl.uniprot.org/uniprot/&gt;
+PREFIX uberon: &lt;http://purl.obolibrary.org/obo/uo#&gt;
+PREFIX sp: &lt;http://spinrdf.org/sp#&gt;
+PREFIX SLM: &lt;https://swisslipids.org/rdf/&gt;
+PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;
+PREFIX sio: &lt;http://semanticscience.org/resource/&gt;
+PREFIX sh: &lt;http://www.w3.org/ns/shacl#&gt;
+PREFIX schema: &lt;http://schema.org/&gt;
+PREFIX rh: &lt;http://rdf.rhea-db.org/&gt;
+PREFIX pubmed: &lt;http://rdf.ncbi.nlm.nih.gov/pubmed/&gt;
+PREFIX patent: &lt;http://data.epo.org/linked-data/def/patent/&gt;
+PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX orthodbGroup: &lt;http://purl.orthodb.org/odbgroup/&gt;
+PREFIX orthodb: &lt;http://purl.orthodb.org/&gt;
+PREFIX orth: &lt;http://purl.org/net/orth#&gt;
+PREFIX np: &lt;http://nextprot.org/rdf#&gt;
+PREFIX nextprot: &lt;http://nextprot.org/rdf/entry/&gt;
+PREFIX mnx: &lt;https://rdf.metanetx.org/schema/&gt;
+PREFIX mnet: &lt;https://rdf.metanetx.org/mnet/&gt;
+PREFIX mesh: &lt;http://id.nlm.nih.gov/mesh/&gt;
+PREFIX lscr: &lt;http://purl.org/lscr#&gt;
+PREFIX keywords: &lt;http://purl.uniprot.org/keywords/&gt;
+PREFIX insdc: &lt;http://identifiers.org/insdc/&gt;
+PREFIX identifiers: &lt;http://identifiers.org/&gt;
+PREFIX glyconnect: &lt;https://purl.org/glyconnect/&gt;
+PREFIX glycan: &lt;http://purl.jp/bio/12/glyco/glycan#&gt;
+PREFIX genex: &lt;http://purl.org/genex#&gt;
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX faldo: &lt;http://biohackathon.org/resource/faldo#&gt;
+PREFIX eunisSpecies: &lt;http://eunis.eea.europa.eu/rdf/species-schema.rdf#&gt;
+PREFIX ensembltranscript: &lt;http://rdf.ebi.ac.uk/resource/ensembl.transcript/&gt;
+PREFIX ensemblterms: &lt;http://rdf.ebi.ac.uk/terms/ensembl/&gt;
+PREFIX ensemblprotein: &lt;http://rdf.ebi.ac.uk/resource/ensembl.protein/&gt;
+PREFIX ensemblexon: &lt;http://rdf.ebi.ac.uk/resource/ensembl.exon/&gt;
+PREFIX ensembl: &lt;http://rdf.ebi.ac.uk/resource/ensembl/&gt;
+PREFIX ec: &lt;http://purl.uniprot.org/enzyme/&gt;
+PREFIX dc: &lt;http://purl.org/dc/terms/&gt;
+PREFIX cco: &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;
+PREFIX chebihash: &lt;http://purl.obolibrary.org/obo/chebi#&gt;
+PREFIX CHEBI: &lt;http://purl.obolibrary.org/obo/CHEBI_&gt;
+PREFIX bibo: &lt;http://purl.org/ontology/bibo/&gt;
+PREFIX allie: &lt;http://allie.dbcls.jp/&gt;
+PREFIX GO: &lt;http://purl.obolibrary.org/obo/GO_&gt;
+PREFIX obo: &lt;http://purl.obolibrary.org/obo/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX taxon: &lt;http://purl.uniprot.org/taxonomy/&gt;
+PREFIX up: &lt;http://purl.uniprot.org/core/&gt;
+
+# Queries uniprot for genes related with a particular GO
+# term and then queries wikidata for these genes
+
+SELECT ?wdtitem ?name
+  WITH {
+    SELECT DISTINCT ?protein ?name WHERE {
+    SERVICE &lt;https://sparql.uniprot.org/sparql&gt; {
+      ?protein rdf:type up:Protein;
+        up:reviewed &#34;true&#34;^^xsd:boolean;
+        up:organism &lt;http://purl.uniprot.org/taxonomy/9606&gt;;
+        (up:classifiedWith|(up:classifiedWith/rdfs:subClassOf)) obo:GO_0016301;
+        up:encodedBy ?gene.
+      ?gene skos:prefLabel ?name.
+   }
+  }
+} AS %uniprot_subquery WHERE {
+    INCLUDE %uniprot_subquery .
+    ?wdtitem wdt:P353 ?name.
+}
+
+</pre>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </body>
+
+    </html>

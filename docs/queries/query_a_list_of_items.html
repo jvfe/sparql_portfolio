@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Query Wikidata for information on a predefined set of items
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5 has-text-light" href="../">
+                    jvfe&#39;s SPARQL queries
+                </a>
+            </div>
+        </nav>
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content">
+                <h1>
+                    Query Wikidata for information on a predefined set of items
+                </h1>
+                <main class="columns py-2">
+                    <div class="column is-full">
+                        <iframe style="width: 100%; height: 50vh; border: none;"
+                            src="https://query.wikidata.org/embed.html#%23%2B%20summary%3A%20Query%20Wikidata%20for%20information%20on%20a%20predefined%20set%20of%20items%0A%23%2B%20endpoint%3A%20https%3A%2F%2Fquery.wikidata.org%2Fsparql%0A%0A%23%20In%20this%20case%2C%20the%20set%20is%20wd%3AQ42%20wd%3AQ2%20wd%3AQ155%0A%23%20Then%20it%20%20checks%20which%20ones%20are%20instances%20of%20human%20(Q5)%0A%23%20And%20retrieve%20some%20optional%20information%20on%20those%20items%0A%20%20%20%20%0A%20%20%20%20SELECT%20DISTINCT%20%3Fitem%20%3FitemLabel%20%3Fbirth%20%3Fdeath%20%3FbirthplaceLabel%20%20%3Fcoordinate%20%0A%20%20%20%20WHERE%20%7B%0A%20%20%20%20VALUES%20%3Fitem%20%7Bwd%3AQ42%20wd%3AQ2%20wd%3AQ155%7D%0A%20%20%20%20%3Fitem%20wdt%3AP31%20wd%3AQ5.%0A%20%20%20%20OPTIONAL%7B%3Fitem%20wdt%3AP569%20%3Fbirth.%7D%20%0A%20%20%20%20OPTIONAL%7B%3Fitem%20wdt%3AP570%20%3Fdeath.%7D%0A%20%20%20%20OPTIONAL%7B%3Fitem%20wdt%3AP19%20%3Fbirthplace.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Fbirthplace%20wdt%3AP625%20%3Fcoordinate.%7D%20%0A%20%20%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%20%20%7D%0A" referrerpolicy="origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                        <pre>#+ summary: Query Wikidata for information on a predefined set of items
+#+ endpoint: https://query.wikidata.org/sparql
+
+# In this case, the set is wd:Q42 wd:Q2 wd:Q155
+# Then it  checks which ones are instances of human (Q5)
+# And retrieve some optional information on those items
+    
+    SELECT DISTINCT ?item ?itemLabel ?birth ?death ?birthplaceLabel  ?coordinate 
+    WHERE {
+    VALUES ?item {wd:Q42 wd:Q2 wd:Q155}
+    ?item wdt:P31 wd:Q5.
+    OPTIONAL{?item wdt:P569 ?birth.} 
+    OPTIONAL{?item wdt:P570 ?death.}
+    OPTIONAL{?item wdt:P19 ?birthplace.
+            ?birthplace wdt:P625 ?coordinate.} 
+    SERVICE wikibase:label { bd:serviceParam wikibase:language &#34;[AUTO_LANGUAGE],en&#34;. }
+    }
+</pre>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </body>
+
+    </html>

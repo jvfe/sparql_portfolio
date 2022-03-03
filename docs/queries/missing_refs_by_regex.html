@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        See articles with a main subject that have a particular regex on the title but no references for the main subject
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5 has-text-light" href="../">
+                    jvfe&#39;s SPARQL queries
+                </a>
+            </div>
+        </nav>
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content">
+                <h1>
+                    See articles with a main subject that have a particular regex on the title but no references for the main subject
+                </h1>
+                <main class="columns py-2">
+                    <div class="column is-full">
+                        <iframe style="width: 100%; height: 50vh; border: none;"
+                            src="https://query.wikidata.org/embed.html#%23%2B%20summary%3A%20See%20articles%20with%20a%20main%20subject%20that%20have%20a%20particular%20regex%20on%20the%20title%20but%20no%20references%20for%20the%20main%20subject%0A%23%2B%20endpoint%3A%20https%3A%2F%2Fquery.wikidata.org%2Fsparql%20%0A%0A%23%20Used%20for%20maintenance%0A%0ASELECT%20%3Fitem%20%3Ftitle%20WHERE%20%7B%0A%20%20%0A%20%20%3Fitem%20wdt%3AP31%20wd%3AQ13442814%3B%0A%20%20%20%20%20%20%20%20wdt%3AP1476%20%3Ftitle%3B%0A%20%20%20%20%20%20%20%20wdt%3AP921%20wd%3AQ82069695%3B%0A%20%20%20%20%20%20%20%20p%3AP921%20%3Fsubject_node.%0A%20%20%20%20%0A%20%20FILTER%20NOT%20EXISTS%20%7B%3Fsubject_node%20prov%3AwasDerivedFrom%20%3Freferences.%7D%0A%20%20FILTER%20(regex(LCASE(%3Ftitle)%2C%20&#39;sars-cov-%3F2&#39;))%0A%20%20%0A%7D%20%0A" referrerpolicy="origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                        <pre>#+ summary: See articles with a main subject that have a particular regex on the title but no references for the main subject
+#+ endpoint: https://query.wikidata.org/sparql 
+
+# Used for maintenance
+
+SELECT ?item ?title WHERE {
+  
+  ?item wdt:P31 wd:Q13442814;
+        wdt:P1476 ?title;
+        wdt:P921 wd:Q82069695;
+        p:P921 ?subject_node.
+    
+  FILTER NOT EXISTS {?subject_node prov:wasDerivedFrom ?references.}
+  FILTER (regex(LCASE(?title), &#39;sars-cov-?2&#39;))
+  
+} 
+</pre>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </body>
+
+    </html>
