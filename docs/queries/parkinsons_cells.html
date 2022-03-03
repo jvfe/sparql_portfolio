@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Cell types related to Parkinson&#39;s disease by markers
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .place-center {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-5 has-text-light" href="../">
+                    jvfe&#39;s SPARQL queries
+                </a>
+            </div>
+        </nav>
+        <section class="py-2 px-3 m-4">
+            <div class="container is-max-desktop content">
+                <h1>
+                    Cell types related to Parkinson&#39;s disease by markers
+                </h1>
+                <main class="columns py-2">
+                    <div class="column is-full">
+                        <iframe style="width: 100%; height: 50vh; border: none;"
+                            src="https://query.wikidata.org/embed.html#%23%2B%20summary%3A%20Cell%20types%20related%20to%20Parkinson&#39;s%20disease%20by%20markers%0A%23%2B%20endpoint%3A%20https%3A%2F%2Fquery.wikidata.org%2Fsparql%0A%0A%23%20Query%20by%20lubianat%20in%20https%3A%2F%2Fjvfe.github.io%2Fpaper_wdt_panglao%2Fv%2F9735f017bbd54b8e7ccd94158f2f9f8e9cb9b1e4%2F%0A%0ASELECT%20%3FcellTypeLabel%20%3FgeneLabel%20%3FdiseaseLabel%20%0AWHERE%20%0A%7B%0A%20%20wd%3AQ11085%20wdt%3AP2293%20%3FdiseaseGene.%20%20%23%20Parkinson&#39;s%20disease%20--%3E%20genetic%20association%20--%3E%20gene%0A%20%20%3FcellType%20wdt%3AP8872%20%3FdiseaseGene.%20%23%20Cell%20type%20--%3E%20has%20marker%20--%3E%20gene%0A%20%20%0A%20%20%3FcellType%20rdfs%3Alabel%20%3FcellTypeLabel.%0A%20%20wd%3AQ11085%20rdfs%3Alabel%20%3FdiseaseLabel.%0A%20%20%3FdiseaseGene%20%20%20rdfs%3Alabel%20%3FgeneLabel.%0A%0A%20%20FILTER(LANG(%3FcellTypeLabel)%20%3D%20%22en%22)%0A%20%20FILTER(LANG(%3FdiseaseLabel)%20%3D%20%22en%22)%0A%20%20FILTER(LANG(%3FgeneLabel)%20%3D%20%22en%22)%0A%7D%0A" referrerpolicy="origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                        <pre>#+ summary: Cell types related to Parkinson&#39;s disease by markers
+#+ endpoint: https://query.wikidata.org/sparql
+
+# Query by lubianat in https://jvfe.github.io/paper_wdt_panglao/v/9735f017bbd54b8e7ccd94158f2f9f8e9cb9b1e4/
+
+SELECT ?cellTypeLabel ?geneLabel ?diseaseLabel 
+WHERE 
+{
+  wd:Q11085 wdt:P2293 ?diseaseGene.  # Parkinson&#39;s disease --&gt; genetic association --&gt; gene
+  ?cellType wdt:P8872 ?diseaseGene. # Cell type --&gt; has marker --&gt; gene
+  
+  ?cellType rdfs:label ?cellTypeLabel.
+  wd:Q11085 rdfs:label ?diseaseLabel.
+  ?diseaseGene   rdfs:label ?geneLabel.
+
+  FILTER(LANG(?cellTypeLabel) = &#34;en&#34;)
+  FILTER(LANG(?diseaseLabel) = &#34;en&#34;)
+  FILTER(LANG(?geneLabel) = &#34;en&#34;)
+}
+</pre>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </body>
+
+    </html>
