@@ -34,4 +34,5 @@ jobs:
           latest=$(git rev-parse HEAD | cut -c 1-8)
           git add docs/ || echo "Nothing to add"
           git commit -m "Update site for $latest" || echo "Commit failed"
-          git push origin master
+          git push origin master || echo "Failed push"
+ 
