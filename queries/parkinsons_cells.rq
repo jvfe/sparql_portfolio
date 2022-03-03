@@ -1,0 +1,19 @@
+#+ summary: Cell types related to Parkinson's disease by markers
+#+ endpoint: https://query.wikidata.org/sparql
+
+# Query by lubianat in https://jvfe.github.io/paper_wdt_panglao/v/9735f017bbd54b8e7ccd94158f2f9f8e9cb9b1e4/
+
+SELECT ?cellTypeLabel ?geneLabel ?diseaseLabel 
+WHERE 
+{
+  wd:Q11085 wdt:P2293 ?diseaseGene.  # Parkinson's disease --> genetic association --> gene
+  ?cellType wdt:P8872 ?diseaseGene. # Cell type --> has marker --> gene
+  
+  ?cellType rdfs:label ?cellTypeLabel.
+  wd:Q11085 rdfs:label ?diseaseLabel.
+  ?diseaseGene   rdfs:label ?geneLabel.
+
+  FILTER(LANG(?cellTypeLabel) = "en")
+  FILTER(LANG(?diseaseLabel) = "en")
+  FILTER(LANG(?geneLabel) = "en")
+}
