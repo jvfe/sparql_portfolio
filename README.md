@@ -16,7 +16,7 @@ npm init
 node index.js
 ```
 
-- Serve the website by opening the \_site directory on your web browser
+- Serve the website by opening the docs directory on your web browser
   or with tools like [python3 http.server](https://docs.python.org/3/library/http.server.html?highlight=http%20server#module-http.server)
   or npm's [lite-server](https://www.npmjs.com/package/lite-server)
 
